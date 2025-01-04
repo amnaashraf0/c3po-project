@@ -30,4 +30,8 @@ public class GearCounter : MonoBehaviour
             Debug.Log("No gear manager");
         }
     }
+
+    public void removeGear() {
+        manager.removeSharedGears(gameObject);
+    }
 }
