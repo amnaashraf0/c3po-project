@@ -8,6 +8,7 @@ public class IMAUpdater : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI uiText;      // Reference to the Text UI component
     [SerializeField] GearManager gearManager;  // Reference to GearManager to get the IMA value
+    private string setText = "Equation for gear train IMA: \r\n" + "(# of teeth on last gear) / (# of teeth on first gear)\r\n";
 
 
     // Update is called once per frame
@@ -15,9 +16,19 @@ public class IMAUpdater : MonoBehaviour
     {
         if (gearManager != null && uiText != null)
         {
+            int[] gears = gearManager.gearList();
             // Directly call the getIMA() method from GearManager
             double ima = gearManager.getIMA();
-            uiText.text = "Total IMA:\n" + ima.ToString("F2");  // Update the text with the IMA value
+            uiText.text = setText;
+            if (ima != 0)
+            {
+
+                uiText.text += $"Current equation: ({gears[1]}) / ({gears[0]})\r\n";
+            }
+            else if (ima == 0) {
+                uiText.text += "Current equation: Gear train not fully assembled\r\n";
+            }
+            uiText.text += "Total IMA: " + ima.ToString("F2");
         }
     }
 }

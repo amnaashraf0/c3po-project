@@ -57,4 +57,8 @@ public class GearManager : MonoBehaviour
     public double getIMA() { 
         return ima;
     }
+
+    public int[] gearList() {
+        return gears;
+    }
 }
