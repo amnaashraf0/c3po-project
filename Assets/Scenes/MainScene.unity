@@ -4870,7 +4870,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Equation for gear train IMA: \n(# of teeth on last gear) / (# of teeth
-    on first gear)\nCurrent equation: (0) / (0) = undefined\nTotal IMA: 0"
+    on first gear)\nCurrent equation: Gear train not assembled\nTotal IMA: 0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
