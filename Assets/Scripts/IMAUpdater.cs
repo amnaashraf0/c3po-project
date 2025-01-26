@@ -21,7 +21,7 @@ public class IMAUpdater : MonoBehaviour
         {
             // Directly call the getIMA() method from GearManager
             double ima = gearManager.getIMA();
-            uiText.text = "IMA: " + ima.ToString("F2");  // Update the text with the IMA value
+            uiText.text = "" + ima.ToString("F2");  // Update the text with the IMA value
         }
     }
 }
