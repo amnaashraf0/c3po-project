@@ -20,6 +20,6 @@ public class IMAScript : MonoBehaviour
         gearTrainIMA = gearManager.getIMA();
         //add other variables as they are developed ex. incline ima, screw ima
         totalIMA = gearTrainIMA;
-        Debug.Log(totalIMA);
+        //Debug.Log(totalIMA);
     }
 }

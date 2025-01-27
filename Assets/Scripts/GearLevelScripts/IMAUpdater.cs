@@ -23,7 +23,7 @@ public class IMAUpdater : MonoBehaviour
             if (ima != 0)
             {
 
-                uiText.text += $"Current equation: ({gears[1]}) / ({gears[0]}) = {ima.ToString("F2")}\r\n";
+                uiText.text += $"Current equation: ({gears[3]}) / ({gears[0]}) = {ima.ToString("F2")}\r\n";
             }
             else if (ima == 0) {
                 uiText.text += "Current equation: Gear train not fully assembled\r\n";
