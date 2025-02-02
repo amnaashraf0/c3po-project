@@ -11,6 +11,7 @@ public class PoleMover : MonoBehaviour
     private int gearCount = 0;
     private Vector3 startingPosition;
     private float speed = 0.01f;
+    private float rotationSpeed = 0.0f;
     GameObject connectedGear = null;
     private bool hasMoved = false;
     private Material cantHoverMaterial = null;
@@ -38,15 +39,23 @@ public class PoleMover : MonoBehaviour
                 this.transform.position = new Vector3(position.x, position.y, position.z - speed);
                 cantHoverMaterial = interactor.interactableCantHoverMeshMaterial;
             }
-            if (isColliding == true) {
+            if (isColliding == true)
+            {
                 interactor.interactableCantHoverMeshMaterial = null;
+                connectedGear.transform.Rotate(Vector3.up);
             }
         }
         else {
             if (hasMoved == true) {
-                transform.position = startingPosition;
-                hasMoved = false;
-                interactor.interactableCantHoverMeshMaterial = cantHoverMaterial;
+                if (transform.position.z < startingPosition.z)
+                {
+                    transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed);
+                }
+                else if (transform.position.z >= startingPosition.z)
+                {
+                    hasMoved = false;
+                    interactor.interactableCantHoverMeshMaterial = cantHoverMaterial;
+                }
             }
         }
     }

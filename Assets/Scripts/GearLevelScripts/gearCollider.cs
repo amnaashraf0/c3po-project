@@ -8,7 +8,13 @@ public class gearCollider : MonoBehaviour
     // Start is called before the first frame update
     Boolean isColliding = false;
     String colliding = "";
-    
+
+/*    void Update()
+    {
+        if (isColliding) {
+            transform.Rotate(Vector3.up);
+        }
+    }*/
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains("Gear"))
