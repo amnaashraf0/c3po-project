@@ -10,32 +10,44 @@ public class PoleMover : MonoBehaviour
     [SerializeField] XRSocketInteractor interactor;
     private int gearCount = 0;
     private Vector3 startingPosition;
-    private float speed = 0.1f;
-    private int counter = 0;
+    private float speed = 0.01f;
+    GameObject connectedGear = null;
+    private bool hasMoved = false;
+    private Material cantHoverMaterial = null;
     void Start()
     {
-        startingPosition = transform.localPosition;
+        startingPosition = transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         gearCount = gearManager.getGearCount();
-        if (gearCount <= 4 && counter <= 100) {
+        if (gearCount == 4)
+        {
+            hasMoved = true;
             IXRSelectInteractable interactable = interactor.GetOldestInteractableSelected();
-            GameObject gear = interactable.transform.gameObject;
-            bool isColliding = gear.GetComponent<gearCollider>().getColliding();
-            string collidingString = gear.GetComponent<gearCollider>().getCollidingString();
-            Debug.Log(isColliding + " " + collidingString);
-            //Debug.Log(isColliding);
-            /*
-            while (gear.GetComponent<gearCollider>().getColliding() == false) {
-                this.transform.localPosition = -Vector3.forward * speed * Time.deltaTime;
-                counter++;
-                if (counter == 100)
-                    break;
+            connectedGear = interactable.transform.gameObject;
+            connectedGear.GetComponent<Rigidbody>().isKinematic = false;
+            bool isColliding = connectedGear.GetComponent<gearCollider>().getColliding();
+
+
+            if (isColliding == false)
+            {
+                Vector3 position = transform.position;
+                this.transform.position = new Vector3(position.x, position.y, position.z - speed);
+                cantHoverMaterial = interactor.interactableCantHoverMeshMaterial;
             }
-            */
+            if (isColliding == true) {
+                interactor.interactableCantHoverMeshMaterial = null;
+            }
+        }
+        else {
+            if (hasMoved == true) {
+                transform.position = startingPosition;
+                hasMoved = false;
+                interactor.interactableCantHoverMeshMaterial = cantHoverMaterial;
+            }
         }
     }
 }

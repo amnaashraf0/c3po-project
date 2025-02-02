@@ -11,33 +11,23 @@ public class gearCollider : MonoBehaviour
     
     private void OnCollisionEnter(Collision collision)
     {
-        isColliding = true;
         if (collision.gameObject.name.Contains("Gear"))
         {
-           // Debug.Log("COLLISION ENTER!!!!!! " + collision.gameObject.name);
-           colliding = collision.gameObject.name;
+            // Debug.Log("COLLISION ENTER!!!!!! " + collision.gameObject.name);
+            colliding = collision.gameObject.name;
+            isColliding = true;
         }
         else {
-            //Debug.Log("COLLISION ENTER!!!!!! " + collision.gameObject.name);
-            colliding = collision.gameObject.name;
+            isColliding = false;
         }
     }
 
-    
     private void OnCollisionStay(Collision collision)
     {
-        isColliding = true;
-        if (collision.gameObject.name.Contains("Gear"))
-        {
-            //Debug.Log("COLLISION STAY!!!!!! " + collision.gameObject.name);
-            colliding = collision.gameObject.name;
-        }
-        else {
-            //Debug.Log("COLLISION STAY!!!!!! " + collision.gameObject.name);
-            colliding = collision.gameObject.name;
+        if (collision.gameObject.name.Contains("Gear")) {
+            isColliding = true;
         }
     }
-    
 
 
     private void OnCollisionExit(Collision collision)
