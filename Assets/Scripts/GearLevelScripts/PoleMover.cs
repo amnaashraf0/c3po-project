@@ -11,7 +11,6 @@ public class PoleMover : MonoBehaviour
     private int gearCount = 0;
     private Vector3 startingPosition;
     private float speed = 0.01f;
-    private float rotationSpeed = 0.0f;
     GameObject connectedGear = null;
     private bool hasMoved = false;
     private Material cantHoverMaterial = null;
@@ -26,13 +25,14 @@ public class PoleMover : MonoBehaviour
         gearCount = gearManager.getGearCount();
         if (gearCount == 4)
         {
+            //get the attached gear and check if the gear is colliding 
             hasMoved = true;
             IXRSelectInteractable interactable = interactor.GetOldestInteractableSelected();
             connectedGear = interactable.transform.gameObject;
             connectedGear.GetComponent<Rigidbody>().isKinematic = false;
             bool isColliding = connectedGear.GetComponent<gearCollider>().getColliding();
 
-
+            //if it is colliding, turn off canthovermeshmaterial, if not, keep moving to the left
             if (isColliding == false)
             {
                 Vector3 position = transform.position;
@@ -42,16 +42,17 @@ public class PoleMover : MonoBehaviour
             if (isColliding == true)
             {
                 interactor.interactableCantHoverMeshMaterial = null;
-                connectedGear.transform.Rotate(Vector3.up);
+                transform.GetChild(0).transform.Rotate(0, 0, 1);
             }
         }
+        //check if a gear was removed when the gear train was complete: if yes move to original position
         else {
             if (hasMoved == true) {
                 if (transform.position.z < startingPosition.z)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + speed);
                 }
-                else if (transform.position.z >= startingPosition.z)
+                else
                 {
                     hasMoved = false;
                     interactor.interactableCantHoverMeshMaterial = cantHoverMaterial;

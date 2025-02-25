@@ -9,17 +9,14 @@ public class gearCollider : MonoBehaviour
     Boolean isColliding = false;
     String colliding = "";
 
-/*    void Update()
+   void Update()
     {
-        if (isColliding) {
-            transform.Rotate(Vector3.up);
-        }
-    }*/
+
+    }
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.name.Contains("Gear"))
         {
-            // Debug.Log("COLLISION ENTER!!!!!! " + collision.gameObject.name);
             colliding = collision.gameObject.name;
             isColliding = true;
         }

@@ -7,6 +7,7 @@ public class GearCounter : MonoBehaviour
 {
     public GearManager manager;
     public XRSocketInteractor interactor;
+    private float rotationSpeed = 0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -34,4 +35,7 @@ public class GearCounter : MonoBehaviour
     public void removeGear() {
         manager.removeSharedGears(gameObject);
     }
+
+    public void setRotationSpeed(float speed) { rotationSpeed = speed; }
+    public float getRotationSpeed() { return rotationSpeed; }
 }
