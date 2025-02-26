@@ -42,7 +42,7 @@ public class PoleMover : MonoBehaviour
             if (isColliding == true)
             {
                 interactor.interactableCantHoverMeshMaterial = null;
-                transform.GetChild(0).transform.Rotate(0, 0, 1);
+                //transform.GetChild(0).transform.Rotate(0, 0, 1);
             }
         }
         //check if a gear was removed when the gear train was complete: if yes move to original position
