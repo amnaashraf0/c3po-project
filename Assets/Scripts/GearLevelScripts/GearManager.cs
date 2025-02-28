@@ -67,6 +67,8 @@ public class GearManager : MonoBehaviour
             else
             {
                 rotationSpeed = poles[i - 1].GetComponent<GearCounter>().getRotationSpeed() * -1;
+                double gearRatio = (double)gears[i] / (double)gears[i - 1];
+                rotationSpeed = rotationSpeed / (float)gearRatio;
                 poles[i].GetComponent<GearCounter>().setRotationSpeed(rotationSpeed);
             }
         }

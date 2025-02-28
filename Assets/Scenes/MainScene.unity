@@ -2348,6 +2348,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   IMAManager: {fileID: 565644772}
+  poles:
+  - {fileID: 2046079719}
+  - {fileID: 112950808}
+  - {fileID: 2023092792}
+  - {fileID: 1068675199}
 --- !u!4 &997394706
 Transform:
   m_ObjectHideFlags: 0
