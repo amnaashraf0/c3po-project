@@ -8,7 +8,7 @@ public class RespawnObject : MonoBehaviour
     private Vector3 startingPosition;
     private Quaternion startingRotation;
 
-    public static float respawnYThreshold = -0.7f;
+    public static float respawnYThreshold = -0.8f;
     // Start is called before the first frame update
     void Start()
     {

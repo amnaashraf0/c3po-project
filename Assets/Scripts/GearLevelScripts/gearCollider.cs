@@ -15,7 +15,7 @@ public class gearCollider : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Gear"))
+        if (collision.gameObject.name.Contains("Gear") || collision.gameObject.name.Contains("stove"))
         {
             colliding = collision.gameObject.name;
             isColliding = true;
@@ -27,7 +27,7 @@ public class gearCollider : MonoBehaviour
 
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name.Contains("Gear")) {
+        if (collision.gameObject.name.Contains("Gear") || collision.gameObject.name.Contains("stove")) {
             isColliding = true;
         }
     }

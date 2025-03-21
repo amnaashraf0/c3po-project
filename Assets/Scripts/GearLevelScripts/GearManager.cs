@@ -12,10 +12,15 @@ public class GearManager : MonoBehaviour
     private Boolean gearTrainComplete = false;
     public IMAScript IMAManager;
     [SerializeField] List<GameObject> poles;
+    [SerializeField] List<ParticleSystem> fire;
+    [SerializeField] GameObject meat;
     // Start is called before the first frame update
     void Start()
     {
-        
+        for (int i = 0; i < fire.Count; i++)
+        {
+            //fire[i].main.startLifetime = 0;
+        }
     }
 
     // Update is called once per frame

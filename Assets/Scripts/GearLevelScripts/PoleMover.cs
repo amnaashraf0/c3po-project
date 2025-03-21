@@ -33,7 +33,7 @@ public class PoleMover : MonoBehaviour
             bool isColliding = connectedGear.GetComponent<gearCollider>().getColliding();
 
             //if it is colliding, turn off canthovermeshmaterial, if not, keep moving to the left
-            if (this.gameObject.name != "Pole 4" && isColliding == false)
+            if (isColliding == false)
             {
                 Vector3 position = transform.position;
                 this.transform.position = new Vector3(position.x, position.y, position.z + speed);
