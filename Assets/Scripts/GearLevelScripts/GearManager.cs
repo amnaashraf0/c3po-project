@@ -19,19 +19,25 @@ public class GearManager : MonoBehaviour
     {
         for (int i = 0; i < fire.Count; i++)
         {
-            //fire[i].main.startLifetime = 0;
+            ParticleSystem ps = fire[i];
+            var main = ps.main;
+            main.startLifetime = 0f;
         }
     }
 
     // Update is called once per frame
     void Update()
     {
+        //rotate the gears on all poles only if gearcount == 4 and the first gear is colliding with the next gear to ensure they dont spin mid movement
         if (gearCounter == 4)
         {
             for (int i = 0; i < poles.Count; i++)
             {
-                float rotSpeed = poles[i].GetComponent<GearCounter>().getRotationSpeed();
-                poles[i].transform.GetChild(0).Rotate(0, 0, rotSpeed);
+                if (poles[0].GetComponent<PoleMover>().isGearColliding())
+                {
+                    float rotSpeed = poles[i].GetComponent<GearCounter>().getRotationSpeed();
+                    poles[i].transform.GetChild(0).Rotate(0, 0, rotSpeed);
+                }
             }
         }
     }
@@ -48,6 +54,7 @@ public class GearManager : MonoBehaviour
             ima = (double)gears[3] / (double)gears[0];
             gearTrainComplete = true;
             setGearRotationSpeed();
+            setFireLifeTime();
             //Debug.Log("Gear IMA " + ima);
         }
     }
@@ -58,6 +65,7 @@ public class GearManager : MonoBehaviour
         string poleName = triggeringObject.transform.name;
         gears[int.Parse(poleName.Substring(poleName.Length - 1))-1] = 0;
         ima = 0;
+        setFireLifeTime();
     }
 
     private void setGearRotationSpeed() {
@@ -75,6 +83,34 @@ public class GearManager : MonoBehaviour
                 double gearRatio = (double)gears[i] / (double)gears[i - 1];
                 rotationSpeed = rotationSpeed / (float)gearRatio;
                 poles[i].GetComponent<GearCounter>().setRotationSpeed(rotationSpeed);
+            }
+        }
+    }
+
+    private void setFireLifeTime() {
+        //sets the fire height based on ima
+        for (int i = 0; i < fire.Count; i++) { 
+            ParticleSystem ps = fire[i];
+            var main = ps.main;
+            var emission = ps.emission;
+            //this first if statement is the correct gear combo 
+            if (ima == 60.0 / 36.0)
+            {
+                main.startLifetime = 1f;
+                emission.rateOverTime = 20;
+            }
+            else if (ima == 0)
+            {
+                main.startLifetime = 0f;
+            }
+            else if (ima < 60.0 / 36.0)
+            {
+                main.startLifetime = 0.5f;
+                emission.rateOverTime = 10;
+            }
+            else {
+                main.startLifetime = 1.5f;
+                emission.rateOverTime = 30;
             }
         }
     }
