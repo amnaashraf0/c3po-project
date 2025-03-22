@@ -11,7 +11,7 @@ public class GearManager : MonoBehaviour
     private double ima = 0;
     private Boolean gearTrainComplete = false;
     //set correctIMA here
-    private double correctIMA = 60.0 / 30;
+    private double correctIMA = 60.0 / 36;
     public IMAScript IMAManager;
     [SerializeField] List<GameObject> poles;
     [SerializeField] List<ParticleSystem> fire;
@@ -108,7 +108,7 @@ public class GearManager : MonoBehaviour
             }
             else if (ima < correctIMA)
             {
-                main.startLifetime = 0.5f;
+                main.startLifetime = 0.4f;
                 emission.rateOverTime = 10;
             }
             else {

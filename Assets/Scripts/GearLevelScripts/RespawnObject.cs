@@ -8,7 +8,7 @@ public class RespawnObject : MonoBehaviour
     private Vector3 startingPosition;
     private Quaternion startingRotation;
 
-    public static float respawnYThreshold = -0.7f;
+    public static float respawnYThreshold = -0.5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +22,12 @@ public class RespawnObject : MonoBehaviour
         //Debug.Log(transform.localPosition.y);
         if (transform.localPosition.y < respawnYThreshold)
         {
-            transform.localPosition = startingPosition;
-            transform.localRotation = startingRotation;
-            //Rigidbody rb = this.GetComponent<Rigidbody>();
-
-            //rb.velocity = Vector3.zero;
+            resetPosition();
         }
+    }
+
+    public void resetPosition() {
+        transform.localPosition = startingPosition;
+        transform.localRotation = startingRotation;
     }
 }
