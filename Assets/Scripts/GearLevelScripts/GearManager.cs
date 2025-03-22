@@ -10,6 +10,8 @@ public class GearManager : MonoBehaviour
     private int[] gears = new int[4];
     private double ima = 0;
     private Boolean gearTrainComplete = false;
+    //set correctIMA here
+    private double correctIMA = 60.0 / 30;
     public IMAScript IMAManager;
     [SerializeField] List<GameObject> poles;
     [SerializeField] List<ParticleSystem> fire;
@@ -55,6 +57,7 @@ public class GearManager : MonoBehaviour
             gearTrainComplete = true;
             setGearRotationSpeed();
             setFireLifeTime();
+            meat.GetComponent<ChangeMeatColor>().setMeatMaterial();
             //Debug.Log("Gear IMA " + ima);
         }
     }
@@ -94,7 +97,7 @@ public class GearManager : MonoBehaviour
             var main = ps.main;
             var emission = ps.emission;
             //this first if statement is the correct gear combo 
-            if (ima == 60.0 / 36.0)
+            if (ima == correctIMA)
             {
                 main.startLifetime = 1f;
                 emission.rateOverTime = 20;
@@ -103,7 +106,7 @@ public class GearManager : MonoBehaviour
             {
                 main.startLifetime = 0f;
             }
-            else if (ima < 60.0 / 36.0)
+            else if (ima < correctIMA)
             {
                 main.startLifetime = 0.5f;
                 emission.rateOverTime = 10;
@@ -122,4 +125,6 @@ public class GearManager : MonoBehaviour
     public int getGearCount() {return gearCounter;}
 
     public bool getTrainComplete() { return gearTrainComplete; }
+
+    public double getCorrectIMA() { return correctIMA; }
 }
