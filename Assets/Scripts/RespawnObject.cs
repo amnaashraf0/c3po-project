@@ -29,5 +29,6 @@ public class RespawnObject : MonoBehaviour
     public void resetPosition() {
         transform.position = startingPosition;
         transform.localRotation = startingRotation;
+        gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
     }
 }

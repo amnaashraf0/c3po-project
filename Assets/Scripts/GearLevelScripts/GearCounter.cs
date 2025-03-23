@@ -8,17 +8,6 @@ public class GearCounter : MonoBehaviour
     public GearManager manager;
     public XRSocketInteractor interactor;
     private float rotationSpeed = 0f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void addGear() {
         if (manager != null)
