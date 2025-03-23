@@ -23,7 +23,7 @@ public class Button : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (!isPressed) {
-            button.transform.localPosition = new Vector3(startingPosition.x, startingPosition.y - 0.012f, startingPosition.z);
+            button.transform.localPosition = new Vector3(startingPosition.x, startingPosition.y - 0.015f, startingPosition.z);
             presser = other.gameObject;
             onPress.Invoke();
             isPressed = true;
