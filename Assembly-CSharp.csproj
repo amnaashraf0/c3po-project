@@ -62,6 +62,7 @@
     <Compile Include="Assets\SubwayTrain\prefab\Empty fixer.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Assets\Crates And Barrels Pack Volume 1 - Free Version\manual.txt" />
     <None Include="Assets\SubwayTrain\Shader\Model Shader DX9.shader" />
     <None Include="Assets\Workplace Tools\README.txt" />
     <None Include="Assets\SubwayTrain\Shader\Model Shader DX11.shader" />
