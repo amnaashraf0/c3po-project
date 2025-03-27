@@ -10,10 +10,13 @@ public class LeverManager : MonoBehaviour
     private double effortWeight;
     private double resWeight;
     private GameObject cannonBall;
+    private double ima;
     // Start is called before the first frame update
     void Start()
     {
         effortWeight = 10;
+        resWeight = 0;
+        ima = 0;
     }
 
     // Update is called once per frame
@@ -36,10 +39,24 @@ public class LeverManager : MonoBehaviour
     public void updateEffortWeight(double effWeight) {
         effortWeight = effWeight;
         weightText.GetComponent<TextMeshPro>().text = effWeight.ToString() + " lb";
+        if (effortWeight > 0) {
+            calculateIMA();
+        }
     }
 
     public void updateResistanceWeight(double resWeight) {
         this.resWeight = resWeight;
-        //Debug.Log(this.resWeight);
+        if (effortWeight > 0) {
+            calculateIMA();
+        }
     }
+
+    public void calculateIMA() {
+        ima = resWeight / effortWeight;
+    }
+
+    public double getIMA() { return ima; }
+    public double getResistance() { return resWeight; }
+
+    public double getEffort() { return effortWeight; }
 }
