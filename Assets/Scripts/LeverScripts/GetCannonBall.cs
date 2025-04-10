@@ -7,14 +7,15 @@ public class GetCannonBall : MonoBehaviour
 {
     public LeverManager manager;
     public XRSocketInteractor interactor;
+    private GameObject cannonBallObj;
 
     public void addCannonball()
     {
         if (manager != null)
         {
             IXRSelectInteractable interactable = interactor.GetOldestInteractableSelected();
-            GameObject cannonBall = interactable.transform.gameObject;
-            manager.setCannonBall(cannonBall);
+            cannonBallObj = interactable.transform.gameObject;
+            manager.setCannonBall(cannonBallObj);
         }
         else
         {

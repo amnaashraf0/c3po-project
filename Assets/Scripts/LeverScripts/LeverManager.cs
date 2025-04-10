@@ -3,14 +3,21 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.XR.Interaction.Toolkit.Transformers;
 
 public class LeverManager : MonoBehaviour
 {
     [SerializeField] GameObject weightText;
+    [SerializeField] GameObject catapultLever; //lever that is pulled that triggers catapult
+    [SerializeField] Animator catapultAnimator;
     private double effortWeight;
     private double resWeight;
     private GameObject cannonBall;
     private double ima;
+    private bool cannonBallLaunched = false;
+    public bool doneLaunching = false;
+    private InteractionLayerMask originalMask;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,7 +29,35 @@ public class LeverManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        //check to see if lever is pulled, if ues play the catapult animation
+        if (catapultLever.GetComponent<LeverPulled>().isLeverPulled() == true)
+        {
+            catapultAnimator.SetBool("PlayAnim", true);
+        }
+        else {
+            catapultAnimator.SetBool("PlayAnim", false);
+        }
+
+        if (cannonBallLaunched) {
+            if (doneLaunching) {
+                cannonBall.GetComponent<XRGrabInteractable>().interactionLayers = originalMask;
+                cannonBall.GetComponent<XRGeneralGrabTransformer>().enabled = true;
+                cannonBall.GetComponent<LaunchCannonball>().enabled = false;
+                cannonBallLaunched = false;
+            }
+        }
+    }
+
+    public void launchCannonBall() {
+        //Debug.Log("Launched cannon ball");
+        if (cannonBall != null) {
+            //cannonBall.GetComponent<XRGrabInteractable>().enabled = false;
+            var grab = cannonBall.GetComponent<XRGrabInteractable>();
+            grab.interactionLayers = 0;
+            cannonBall.GetComponent<XRGeneralGrabTransformer>().enabled = false;
+            cannonBall.GetComponent<LaunchCannonball>().enabled = true;
+            cannonBallLaunched = true;
+        }
     }
 
     public void setCannonBall(GameObject cannonBall) { 
@@ -30,6 +65,7 @@ public class LeverManager : MonoBehaviour
         if (cannonBall != null)
         {
             updateResistanceWeight(this.cannonBall.GetComponent<CannonballProperties>().getWeight());
+            originalMask = cannonBall.GetComponent<XRGrabInteractable>().interactionLayers;
         }
         else {
             updateResistanceWeight(0);

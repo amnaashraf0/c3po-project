@@ -4,18 +4,20 @@ using UnityEngine;
 
 public class LeverPulled : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
+    private bool leverPulled = false;
     // Update is called once per frame
     void Update()
     {
         //Debug.Log(transform.localEulerAngles.z);
-        if (transform.localEulerAngles.z > 300 && transform.localEulerAngles.z < 320) {
-            Debug.Log("Lever pulled");
+        if (transform.localEulerAngles.z > 300 && transform.localEulerAngles.z < 320)
+        {
+            //Debug.Log("Lever pulled");
+            leverPulled = true;
+        }
+        else {
+            leverPulled = false;
         }
     }
+
+    public bool isLeverPulled() { return leverPulled; }
 }
