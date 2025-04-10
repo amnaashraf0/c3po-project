@@ -13,9 +13,9 @@ public class LeverPulled : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(transform.localRotation);
-        if (transform.localRotation.z < -35) {
-            Debug.Log("Lever pulled");
+        Debug.Log(transform.localEulerAngles.y);
+        if (transform.localRotation.y < -0.15) {
+            //Debug.Log("Lever pulled");
         }
     }
 }
