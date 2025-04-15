@@ -32,9 +32,11 @@ public class LeverManager : MonoBehaviour
         //check to see if lever is pulled, if ues play the catapult animation
         if (catapultLever.GetComponent<LeverPulled>().isLeverPulled() == true)
         {
+            //Debug.Log("Play animation");
             catapultAnimator.SetBool("PlayAnim", true);
         }
         else {
+            //Debug.Log("Don't play animation");
             catapultAnimator.SetBool("PlayAnim", false);
         }
 

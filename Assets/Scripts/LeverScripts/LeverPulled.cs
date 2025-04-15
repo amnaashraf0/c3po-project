@@ -5,10 +5,11 @@ using UnityEngine;
 public class LeverPulled : MonoBehaviour
 {
     private bool leverPulled = false;
+
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log(transform.localEulerAngles.z);
+       // Debug.Log(transform.localEulerAngles.z);
         if (transform.localEulerAngles.z > 300 && transform.localEulerAngles.z < 320)
         {
             //Debug.Log("Lever pulled");
@@ -16,6 +17,7 @@ public class LeverPulled : MonoBehaviour
         }
         else {
             leverPulled = false;
+            //Debug.Log("Lever not pulled");
         }
     }
 
