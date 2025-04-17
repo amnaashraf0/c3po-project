@@ -12,13 +12,14 @@ public class LeverManager : MonoBehaviour
     [SerializeField] GameObject catapultLever; //lever that is pulled that triggers catapult
     [SerializeField] Animator catapultAnimator;
     [SerializeField] List<QuadraticCurve> curves;
-    [SerializeField] GameObject catapult;
+    [SerializeField] GameObject catapult; //actual catapult 
+    [SerializeField] GameObject catapultUI;
     private GameObject cannonBall;
     private GameObject launchedCannonBall;
     private double effortWeight;
     private double resWeight;
     private double ima;
-    private double correctIMA;
+    private double correctIMA = 2;
     private bool cannonBallLaunched = false;
     public bool doneLaunching = false;
     // Start is called before the first frame update
@@ -27,7 +28,6 @@ public class LeverManager : MonoBehaviour
         effortWeight = 10;
         resWeight = 0;
         ima = 0;
-        correctIMA = 2;
     }
 
     // Update is called once per frame
@@ -57,7 +57,7 @@ public class LeverManager : MonoBehaviour
     }
 
     public void launchCannonBall() {
-        //Debug.Log("Launched cannon ball");
+        catapultUI.GetComponent<CatapultUiUpdate>().setCatapultText();
         if (cannonBall != null) {
             //necessary because cannonBall is set to null once it leaves the lever. need to maintain access to it, so store in seperate variable.
             launchedCannonBall = cannonBall;
@@ -110,6 +110,7 @@ public class LeverManager : MonoBehaviour
 
     public double getIMA() { return ima; }
     public double getResistance() { return resWeight; }
-
     public double getEffort() { return effortWeight; }
+
+    public double getCorrectIMA() { return correctIMA; }
 }

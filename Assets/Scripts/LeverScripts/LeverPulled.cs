@@ -10,7 +10,7 @@ public class LeverPulled : MonoBehaviour
     void Update()
     {
        // Debug.Log(transform.localEulerAngles.z);
-        if (transform.localEulerAngles.z > 300 && transform.localEulerAngles.z < 320)
+        if (transform.localEulerAngles.z > 250 && transform.localEulerAngles.z < 320)
         {
             //Debug.Log("Lever pulled");
             leverPulled = true;
