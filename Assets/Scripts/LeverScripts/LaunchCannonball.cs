@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LaunchCannonball : MonoBehaviour
 {
-    public QuadraticCurve curve;
+    private QuadraticCurve curve;
     public float speed;
     public bool done = false;
     [SerializeField] LeverManager leverManager;
@@ -18,13 +18,20 @@ public class LaunchCannonball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        sampleTime += Time.deltaTime * speed;
-        transform.position = curve.evaluate(sampleTime);
-        transform.forward = curve.evaluate(sampleTime + 0.001f) - transform.position;
+        if (!done)
+        {
+            sampleTime += Time.deltaTime * speed;
+            transform.position = curve.evaluate(sampleTime);
+            transform.forward = curve.evaluate(sampleTime + 0.001f) - transform.position;
 
-        if (sampleTime >= 1f) {
-            //Debug.Log("done");
-            leverManager.doneLaunching = true;
+            if (sampleTime >= 1f)
+            {
+                //Debug.Log("done");
+                leverManager.doneLaunching = true;
+            }
         }
     }
+
+    public void setCurve(QuadraticCurve givenCurve) { curve = givenCurve; }
+    public void resetTime() { sampleTime = 0f; }
 }

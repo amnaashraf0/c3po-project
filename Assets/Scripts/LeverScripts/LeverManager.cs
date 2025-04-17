@@ -11,19 +11,23 @@ public class LeverManager : MonoBehaviour
     [SerializeField] GameObject weightText;
     [SerializeField] GameObject catapultLever; //lever that is pulled that triggers catapult
     [SerializeField] Animator catapultAnimator;
+    [SerializeField] List<QuadraticCurve> curves;
+    [SerializeField] GameObject catapult;
+    private GameObject cannonBall;
+    private GameObject launchedCannonBall;
     private double effortWeight;
     private double resWeight;
-    private GameObject cannonBall;
     private double ima;
+    private double correctIMA;
     private bool cannonBallLaunched = false;
     public bool doneLaunching = false;
-    private InteractionLayerMask originalMask;
     // Start is called before the first frame update
     void Start()
     {
         effortWeight = 10;
         resWeight = 0;
         ima = 0;
+        correctIMA = 2;
     }
 
     // Update is called once per frame
@@ -42,10 +46,12 @@ public class LeverManager : MonoBehaviour
 
         if (cannonBallLaunched) {
             if (doneLaunching) {
-                cannonBall.GetComponent<XRGrabInteractable>().interactionLayers = originalMask;
-                cannonBall.GetComponent<XRGeneralGrabTransformer>().enabled = true;
-                cannonBall.GetComponent<LaunchCannonball>().enabled = false;
+                launchedCannonBall.GetComponent<LaunchCannonball>().enabled = false;
+                catapult.GetComponent<XRSocketInteractor>().enabled = true;
+                doneLaunching = false;
                 cannonBallLaunched = false;
+                launchedCannonBall.GetComponent<LaunchCannonball>().resetTime();
+                launchedCannonBall = null;
             }
         }
     }
@@ -53,21 +59,30 @@ public class LeverManager : MonoBehaviour
     public void launchCannonBall() {
         //Debug.Log("Launched cannon ball");
         if (cannonBall != null) {
-            //cannonBall.GetComponent<XRGrabInteractable>().enabled = false;
-            var grab = cannonBall.GetComponent<XRGrabInteractable>();
-            grab.interactionLayers = 0;
-            cannonBall.GetComponent<XRGeneralGrabTransformer>().enabled = false;
-            cannonBall.GetComponent<LaunchCannonball>().enabled = true;
+            //necessary because cannonBall is set to null once it leaves the lever. need to maintain access to it, so store in seperate variable.
+            launchedCannonBall = cannonBall;
+            if (ima > correctIMA)
+            {
+                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[0]);
+            }
+            else if (ima == correctIMA)
+            {
+                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[1]);
+            }
+            else {
+                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[2]);
+            }
+            launchedCannonBall.GetComponent<LaunchCannonball>().enabled = true;
+            catapult.GetComponent<XRSocketInteractor>().enabled = false;
             cannonBallLaunched = true;
         }
     }
 
-    public void setCannonBall(GameObject cannonBall) { 
+    public void setCannonBall(GameObject cannonBall) {
         this.cannonBall = cannonBall;
         if (cannonBall != null)
         {
             updateResistanceWeight(this.cannonBall.GetComponent<CannonballProperties>().getWeight());
-            originalMask = cannonBall.GetComponent<XRGrabInteractable>().interactionLayers;
         }
         else {
             updateResistanceWeight(0);
