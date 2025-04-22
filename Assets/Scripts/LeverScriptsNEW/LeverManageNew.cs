@@ -11,7 +11,8 @@ public class LeverManageNew : MonoBehaviour
     [SerializeField] GameObject catapultLever; //lever that is pulled that triggers catapult
     //[SerializeField] Animator catapultAnimator;
     [SerializeField] List<QuadraticCurve> curves;
-    [SerializeField] GameObject catapult; //actual catapult 
+    [SerializeField] GameObject catapultFulcrum;
+    //[SerializeField] GameObject catapult; //actual catapult 
     [SerializeField] GameObject catapultUI;
     private GameObject cannonBall;
     private GameObject launchedCannonBall;
@@ -43,7 +44,7 @@ public class LeverManageNew : MonoBehaviour
             //catapultAnimator.SetBool("PlayAnim", false);
         }
 
-        if (cannonBallLaunched) {
+        /*if (cannonBallLaunched) {
             if (doneLaunching) {
                 launchedCannonBall.GetComponent<LaunchCannonball>().enabled = false;
                 catapult.GetComponent<XRSocketInteractor>().enabled = true;
@@ -52,7 +53,7 @@ public class LeverManageNew : MonoBehaviour
                 launchedCannonBall.GetComponent<LaunchCannonball>().resetTime();
                 launchedCannonBall = null;
             }
-        }
+        }*/
     }
 
     public void launchCannonBall() {
@@ -72,7 +73,7 @@ public class LeverManageNew : MonoBehaviour
                 launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[2]);
             }
             launchedCannonBall.GetComponent<LaunchCannonball>().enabled = true;
-            catapult.GetComponent<XRSocketInteractor>().enabled = false;
+            //catapult.GetComponent<XRSocketInteractor>().enabled = false;
             cannonBallLaunched = true;
         }
     }
@@ -89,10 +90,11 @@ public class LeverManageNew : MonoBehaviour
     }*/
 
 
-    public void updateDistances(double effDis, double resDis) {
+    public void updateDistances(double effDis, double resDis, int fulcrumPosition) {
         effortDistance = effDis;
         resDistance = resDis;
         calculateIMA();
+        catapultFulcrum.GetComponent<MoveFulcrum>().setFulcrumPosition(fulcrumPosition);
     }
 
     public void calculateIMA() {
