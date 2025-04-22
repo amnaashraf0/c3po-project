@@ -3,7 +3,8 @@ using UnityEngine;
 public class WheelManager : MonoBehaviour
 {
     [SerializeField] private WheelCollision wheelCollision; // Reference to the WheelCollision script on the barrel collider
-    private GameObject currentWheel = null;
+    [SerializeField] GameObject BottomCylinder;
+    public GameObject currentWheel = null;
 
     // Axle radius is always 0.5 inches
     private const float axleRadius = 0.5f;
@@ -11,24 +12,16 @@ public class WheelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (wheelCollision.getColliding())
+        if (true)
         {
-            string wheelName = wheelCollision.getCollidingString();
+            string wheelName = wheelCollision.GetConnectedWheel();
             GameObject foundWheel = GameObject.Find(wheelName);
 
-            if (foundWheel != null && foundWheel != currentWheel)
+            /*if (foundWheel != null && foundWheel != currentWheel)
             {
                 currentWheel = foundWheel;
                 Debug.Log("Wheel placed on barrel: " + currentWheel.name);
-            }
-        }
-        else
-        {
-            if (currentWheel != null)
-            {
-                Debug.Log("Wheel removed from barrel: " + currentWheel.name);
-                currentWheel = null;
-            }
+            }*/
         }
     }
 
@@ -47,8 +40,19 @@ public class WheelManager : MonoBehaviour
     // Returns true if a wheel is currently on the barrel
     public bool HasWheel()
     {
-        return currentWheel != null;
+
+       if (BottomCylinder.GetComponent<WheelCollision>().GetConnectedWheel() == "noIMA")
+        {
+            return true;
+        }
+       else
+            return false;
     }
+
+   /* public bool HasWheel()
+    {
+        return currentWheel != null;
+    }*/
 
     // Returns the IMA for the current wheel and axle system
     public double getIMA()
@@ -73,3 +77,4 @@ public class WheelManager : MonoBehaviour
         return wheelRadius / axleRadius;
     }
 }
+

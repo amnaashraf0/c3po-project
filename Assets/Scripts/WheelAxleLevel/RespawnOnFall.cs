@@ -34,12 +34,5 @@ public class RespawnOnFall : MonoBehaviour
         // Reset position and rotation
         transform.position = initialPosition;
         transform.rotation = initialRotation;
-
-        // If using physics, reset velocity and angular velocity
-        if (rb != null)
-        {
-            rb.velocity = Vector3.zero;
-            rb.angularVelocity = Vector3.zero;
-        }
     }
 }

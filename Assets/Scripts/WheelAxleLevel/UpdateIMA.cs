@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;  // Required for Text UI
-using System.Collections;
-using TMPro;
-using UnityEngine;
 
 public class UpdateIMA : MonoBehaviour
 {
@@ -31,8 +29,10 @@ public class UpdateIMA : MonoBehaviour
             else if (wheelName == "2.75 (220mm Travel) Anti-Static Wheel")
                 wheelRadius = 2.75f;
 
+            // Start with the static equation text
             uiText.text = setText;
 
+            // If a wheel is present and IMA is not zero, show the calculation
             if (ima != 0 && wheelManager.HasWheel())
             {
                 uiText.text += $"Current equation: ({wheelRadius}) / ({axleRadius}) = {ima.ToString("F2")}\r\n";
@@ -42,7 +42,11 @@ public class UpdateIMA : MonoBehaviour
                 uiText.text += "Current equation: Wheel not placed on barrel\r\n";
             }
 
+            // Always show the total IMA at the end
             uiText.text += "Total IMA: " + ima.ToString("F2");
+
+            // Optional: For debugging, you can uncomment the line below
+            // Debug.Log($"UpdateIMA: wheelName={wheelName}, wheelRadius={wheelRadius}, ima={ima}");
         }
     }
 }
