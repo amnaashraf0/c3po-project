@@ -23,6 +23,7 @@ public class DeDrLeverPulled : MonoBehaviour
             isActive = true;
             GetComponent<XRGrabInteractable>().enabled = false;
             transform.localEulerAngles = new Vector3(120, transform.localEulerAngles.y, transform.localEulerAngles.z);
+            leverManager.updateDistances(effortDistance, resDistance, fulcrumPosition);
         }
     }
 
@@ -38,7 +39,6 @@ public class DeDrLeverPulled : MonoBehaviour
         else if (isActive && effortDistance != leverManager.getEffort()) {
             unsetActiveLever();
         }
-
     }
 
     public void setActiveLever() {

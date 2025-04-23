@@ -6058,13 +6058,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 137452855}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.7071064, y: 0.000700973, z: -0.0007009804, w: 0.7071065}
-  m_LocalPosition: {x: 1.4381126, y: -0.5706046, z: -1.5300003}
-  m_LocalScale: {x: 9.509675, y: 9.509674, z: 9.509674}
+  m_LocalRotation: {x: -0.7071064, y: 0.0007009655, z: -0.000700973, w: 0.7071065}
+  m_LocalPosition: {x: 1.0811126, y: -2.4386046, z: 0.73999965}
+  m_LocalScale: {x: 9.50967, y: 9.509674, z: 9.50967}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2024870611}
-  m_Father: {fileID: 2019032870}
+  m_Father: {fileID: 1253318256}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &137452862
 MonoBehaviour:
@@ -8303,7 +8303,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -1.63, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 82.14031, y: 1.1729006, z: -11.296641}
+  m_ConnectedAnchor: {x: 82.14031, y: 1.2510529, z: -11.325035}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
@@ -11447,7 +11447,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -1.63, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 82.61131, y: 1.1729006, z: -11.296641}
+  m_ConnectedAnchor: {x: 82.61131, y: 1.2510529, z: -11.325035}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
@@ -14790,7 +14790,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -1.63, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 81.123314, y: 1.1729006, z: -11.296641}
+  m_ConnectedAnchor: {x: 81.123314, y: 1.2510529, z: -11.325035}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
@@ -15500,7 +15500,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -1.63, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 81.636314, y: 1.1729006, z: -11.296641}
+  m_ConnectedAnchor: {x: 81.636314, y: 1.2510529, z: -11.325035}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
@@ -15816,6 +15816,54 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1249858820}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1253318255
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1253318256}
+  - component: {fileID: 1253318257}
+  m_Layer: 0
+  m_Name: pivotPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1253318256
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253318255}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.357, y: 2.54, z: -2.27}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 137452861}
+  m_Father: {fileID: 2019032870}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1253318257
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253318255}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 991cce1ea32865843ade715d060445b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  catapultArm: {fileID: 137452855}
+  fullCatapultObj: {fileID: 2019032867}
+  catapultBase: {fileID: 1653105827}
 --- !u!1 &1254716950
 GameObject:
   m_ObjectHideFlags: 0
@@ -17048,7 +17096,7 @@ Transform:
   m_GameObject: {fileID: 1337434315}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 79.68085, y: 48.7074, z: -3.949}
+  m_LocalPosition: {x: 79.68085, y: 49.003, z: -3.949}
   m_LocalScale: {x: 0.32086626, y: 0.32086626, z: 0.32086626}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -18332,37 +18380,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1501122149}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1510335725
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1510335726}
-  m_Layer: 0
-  m_Name: catapult_hinge
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1510335726
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1510335725}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.1432166, w: 0.9896914}
-  m_LocalPosition: {x: 2.54, y: 1.92, z: -2.44}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 2019032870}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -16.468}
 --- !u!1 &1510472752
 GameObject:
   m_ObjectHideFlags: 0
@@ -25055,9 +25072,9 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1653105827}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.70710677, y: 0, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -1.53, y: -0.55, z: -1.61}
-  m_LocalScale: {x: 6.8199577, y: 6.8199577, z: 9.272617}
+  m_LocalRotation: {x: -0.70710677, y: -0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -1.5299987, y: -0.5500023, z: -1.6099988}
+  m_LocalScale: {x: 7.9643474, y: 6.8199587, z: 12.124429}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2019032870}
@@ -25355,7 +25372,7 @@ MonoBehaviour:
   - {fileID: 1561000658}
   - {fileID: 359874991}
   - {fileID: 1772220398}
-  catapult: {fileID: 1510335725}
+  catapultFulcrum: {fileID: 1253318255}
   catapultUI: {fileID: 989003902}
   doneLaunching: 0
 --- !u!1 &1702781930
@@ -28404,7 +28421,7 @@ HingeJoint:
   m_Anchor: {x: 0, y: -1.63, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 80.60132, y: 1.1729006, z: -11.296641}
+  m_ConnectedAnchor: {x: 80.60132, y: 1.2510529, z: -11.325035}
   serializedVersion: 2
   m_UseSpring: 1
   m_Spring:
@@ -29291,7 +29308,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2019032870}
   - component: {fileID: 2019032868}
-  - component: {fileID: 2019032869}
   m_Layer: 0
   m_Name: catapult
   m_TagString: Untagged
@@ -29320,19 +29336,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &2019032869
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2019032867}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5bdcbfb945216504c8027e77b59c85b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LM: {fileID: 0}
 --- !u!4 &2019032870
 Transform:
   m_ObjectHideFlags: 0
@@ -29346,9 +29349,8 @@ Transform:
   m_LocalScale: {x: 0.27292314, y: 0.27292314, z: 0.27292314}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 137452861}
-  - {fileID: 1510335726}
   - {fileID: 1653105828}
+  - {fileID: 1253318256}
   - {fileID: 1974352345}
   m_Father: {fileID: 1013039678}
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}

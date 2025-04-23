@@ -7,12 +7,13 @@ public class MoveFulcrum : MonoBehaviour
 {
     [SerializeField] GameObject catapultArm;
     [SerializeField] GameObject fullCatapultObj;
+    [SerializeField] GameObject catapultBase;
     private float[] fulcrumPositions = { 0.32f, 1.3f, 2, 2.84f, 3.86f };
     private int chosenPosition;
     // Start is called before the first frame update
     void Start()
     {
-        chosenPosition = 0;   
+        chosenPosition = 0;
     }
 
     // Update is called once per frame
@@ -23,11 +24,13 @@ public class MoveFulcrum : MonoBehaviour
 
     public void setFulcrumPosition(int pos) {
         catapultArm.transform.SetParent(fullCatapultObj.transform);
+        catapultBase.transform.SetParent(transform);
 
         // subtract one cause 0 is first index
         chosenPosition = pos - 1;
         transform.localPosition = new Vector3(fulcrumPositions[chosenPosition], transform.localPosition.y, transform.localPosition.z);
 
         catapultArm.transform.SetParent(this.transform);
+        catapultBase.transform.SetParent(fullCatapultObj.transform);
     }
 }
