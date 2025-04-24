@@ -55,7 +55,7 @@ public class LeverManageNew : MonoBehaviour
     }
 
     public void launchCannonBall() {
-        //catapultUI.GetComponent<CatapultUiUpdate>().setCatapultText();
+        catapultUI.GetComponent<CatapultUiUpdateNew>().setCatapultText();
 
         if (ima > correctIMA)
         {
