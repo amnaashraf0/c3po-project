@@ -5,80 +5,39 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.XR.Interaction.Toolkit;
 
-public class WheelCollision: MonoBehaviour
+public class WheelCollision : MonoBehaviour
 {
-    [SerializeField] XRSocketInteractor interactor;
-    [SerializeField] WheelManager wheelManager; 
-
-    // Start is called before the first frame update
-    Boolean isColliding = false;
-    String colliding = "";
+    [SerializeField] XRSocketInteractor interactor; // Assign in Inspector
+    [SerializeField] WheelManager wheelManager;    // Assign in Inspector
 
     void Update()
     {
-        // Returns the GameObject currently attached to the interactor, or null if none.
-        if (interactor != null)
+        if (interactor != null && wheelManager != null)
         {
             IXRSelectInteractable interactable = interactor.GetOldestInteractableSelected();
             if (interactable != null)
             {
-                GameObject connectedWheel = interactable.transform.gameObject;
-                Debug.Log(connectedWheel.name);
-                //wheelManager.currentWheel = interactable.transform.gameObject;
+                // Directly update currentWheel in WheelManager
+                wheelManager.currentWheel = interactable.transform.gameObject;
             }
             else
             {
-                Debug.Log("null");
+                wheelManager.currentWheel = null;
             }
         }
     }
-    public String GetConnectedWheel()
+
+    public string GetConnectedWheel()
     {
         if (interactor != null)
         {
             IXRSelectInteractable interactable = interactor.GetOldestInteractableSelected();
-            if (interactable != null)
-            {
-                GameObject connectedWheel = interactable.transform.gameObject;
-                return (connectedWheel.name);
-            }
-            else { return null; }
+            return interactable != null ? interactable.transform.gameObject.name : "";
         }
-        else
-        {
-            return "noWheel";
-        }
+        return "";
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.name.Contains("Wheel"))
-        {
-            colliding = collision.gameObject.name;
-            isColliding = true;
-        }
-        else
-        {
-            isColliding = false;
-        }
-    }
-
-    private void OnCollisionStay(Collision collision)
-    {
-        if (collision.gameObject.name.Contains("Wheel"))
-        {
-            isColliding = true;
-        }
-    }
-
-
-    private void OnCollisionExit(Collision collision)
-    {
-        isColliding = false;
-        colliding = collision.gameObject.name;
-    }
-
-    public Boolean getColliding() { return isColliding; }
-
-    public String getCollidingString() { return colliding; }
+    // Remove collision-related code (not needed since you're using XR interactions)
+    // Delete OnCollisionEnter/Stay/Exit, getColliding(), etc.
 }
+

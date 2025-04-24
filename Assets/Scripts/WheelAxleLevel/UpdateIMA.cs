@@ -7,11 +7,10 @@ using UnityEngine.UI;  // Required for Text UI
 
 public class UpdateIMA : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI uiText;      // Reference to the Text UI component
-    [SerializeField] WheelManager wheelManager;   // Reference to WheelManager to get the IMA value
-    private string setText = "Equation for wheel and axle IMA: \r\n" + "(radius of wheel) / (radius of axle)\r\n";
+    [SerializeField] TextMeshProUGUI uiText;     // Assign in Inspector
+    [SerializeField] WheelManager wheelManager;  // Assign in Inspector
+    private string setText = "Equation for wheel and axle IMA: \r\n(radius of wheel) / (radius of axle)\r\n";
 
-    // Update is called once per frame
     void Update()
     {
         if (wheelManager != null && uiText != null)
@@ -21,7 +20,6 @@ public class UpdateIMA : MonoBehaviour
             float wheelRadius = 0f;
             float axleRadius = 0.5f;
 
-            // Determine the wheel radius for display
             if (wheelName == "4 (320mm Travel) Anti-Static Wheel")
                 wheelRadius = 4.0f;
             else if (wheelName == "3.25 (260mm Travel) Anti-Static Wheel")
@@ -29,24 +27,19 @@ public class UpdateIMA : MonoBehaviour
             else if (wheelName == "2.75 (220mm Travel) Anti-Static Wheel")
                 wheelRadius = 2.75f;
 
-            // Start with the static equation text
             uiText.text = setText;
 
-            // If a wheel is present and IMA is not zero, show the calculation
             if (ima != 0 && wheelManager.HasWheel())
             {
-                uiText.text += $"Current equation: ({wheelRadius}) / ({axleRadius}) = {ima.ToString("F2")}\r\n";
+                uiText.text += $"Current equation: ({wheelRadius}) / ({axleRadius}) = {ima:F2}\r\n";
             }
             else
             {
                 uiText.text += "Current equation: Wheel not placed on barrel\r\n";
             }
 
-            // Always show the total IMA at the end
             uiText.text += "Total IMA: " + ima.ToString("F2");
-
-            // Optional: For debugging, you can uncomment the line below
-            // Debug.Log($"UpdateIMA: wheelName={wheelName}, wheelRadius={wheelRadius}, ima={ima}");
         }
     }
 }
+
