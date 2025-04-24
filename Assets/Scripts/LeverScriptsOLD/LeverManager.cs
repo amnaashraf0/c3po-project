@@ -56,6 +56,7 @@ public class LeverManager : MonoBehaviour
         }
     }
 
+    //this is only called by the animation event
     public void launchCannonBall() {
         catapultUI.GetComponent<CatapultUiUpdate>().setCatapultText();
         if (cannonBall != null) {

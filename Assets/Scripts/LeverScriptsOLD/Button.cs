@@ -24,9 +24,9 @@ public class Button : MonoBehaviour
     {
         if (!isPressed) {
             button.transform.localPosition = new Vector3(startingPosition.x, startingPosition.y - 0.015f, startingPosition.z);
-            presser = other.gameObject;
+            //presser = other.gameObject;
             onPress.Invoke();
-            isPressed = true;
+            //isPressed = true;
         }
     }
 

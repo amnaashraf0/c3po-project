@@ -9,13 +9,12 @@ using UnityEngine.XR.Interaction.Toolkit.Transformers;
 public class LeverManageNew : MonoBehaviour
 {
     [SerializeField] GameObject catapultLever; //lever that is pulled that triggers catapult
-    //[SerializeField] Animator catapultAnimator;
+    [SerializeField] Animator catapultAnimator;
     [SerializeField] List<QuadraticCurve> curves;
     [SerializeField] GameObject catapultFulcrum;
-    //[SerializeField] GameObject catapult; //actual catapult 
     [SerializeField] GameObject catapultUI;
-    private GameObject cannonBall;
-    private GameObject launchedCannonBall;
+    [SerializeField] GameObject cannonBall;
+    [SerializeField] GameObject catapult;
     private double effortDistance;
     private double resDistance;
     private double ima;
@@ -36,58 +35,41 @@ public class LeverManageNew : MonoBehaviour
         //check to see if lever is pulled, if yes play the catapult animation
         if (catapultLever.GetComponent<LeverPulled>().isLeverPulled() == true)
         {
-            //KEEP COMMENTED FOR NOW UNTIL NEW ANIMATOR IMPLEMENTED
-            //catapultAnimator.SetBool("PlayAnim", true);
+            catapultAnimator.SetBool("PlayAnim", true);
         }
         else {
-            //KEEP COMMENTED FOR NOW UNTIL NEW ANIMATOR IMPLEMENTED
-            //catapultAnimator.SetBool("PlayAnim", false);
+            catapultAnimator.SetBool("PlayAnim", false);
         }
 
-        /*if (cannonBallLaunched) {
-            if (doneLaunching) {
-                launchedCannonBall.GetComponent<LaunchCannonball>().enabled = false;
-                catapult.GetComponent<XRSocketInteractor>().enabled = true;
+        if (cannonBallLaunched)
+        {
+            if (doneLaunching)
+            {
+                cannonBall.GetComponent<LaunchCannonballNew>().enabled = false;
                 doneLaunching = false;
                 cannonBallLaunched = false;
-                launchedCannonBall.GetComponent<LaunchCannonball>().resetTime();
-                launchedCannonBall = null;
+                cannonBall.GetComponent<LaunchCannonballNew>().resetTime();
             }
-        }*/
+        }
     }
 
     public void launchCannonBall() {
-        catapultUI.GetComponent<CatapultUiUpdate>().setCatapultText();
-        if (cannonBall != null) {
-            //necessary because cannonBall is set to null once it leaves the lever. need to maintain access to it, so store in seperate variable.
-            launchedCannonBall = cannonBall;
-            if (ima > correctIMA)
-            {
-                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[0]);
-            }
-            else if (ima == correctIMA)
-            {
-                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[1]);
-            }
-            else {
-                launchedCannonBall.GetComponent<LaunchCannonball>().setCurve(curves[2]);
-            }
-            launchedCannonBall.GetComponent<LaunchCannonball>().enabled = true;
-            //catapult.GetComponent<XRSocketInteractor>().enabled = false;
-            cannonBallLaunched = true;
-        }
-    }
+        //catapultUI.GetComponent<CatapultUiUpdate>().setCatapultText();
 
-/*    public void setCannonBall(GameObject cannonBall) {
-        this.cannonBall = cannonBall;
-        if (cannonBall != null)
+        if (ima > correctIMA)
         {
-            updateResistanceWeight(this.cannonBall.GetComponent<CannonballProperties>().getWeight());
+            cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[0]);
+        }
+        else if (ima == correctIMA)
+        {
+            cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[1]);
         }
         else {
-            updateResistanceWeight(0);
+            cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[2]);
         }
-    }*/
+        cannonBall.GetComponent<LaunchCannonballNew>().enabled = true;
+        cannonBallLaunched = true;
+    }
 
 
     public void updateDistances(double effDis, double resDis, int fulcrumPosition) {
