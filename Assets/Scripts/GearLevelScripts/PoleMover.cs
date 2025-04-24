@@ -48,10 +48,6 @@ public class PoleMover : MonoBehaviour
         //check if a gear was removed when the gear train was complete: if yes move to original position
         else {
             if (hasMoved == true) {
-                if (this.gameObject.name.Equals("Pole 1")) {
-                    Debug.Log("starting z: " + startingPosition.z);
-                    Debug.Log("current z: " + this.transform.position);
-                }
                 if (transform.localPosition.z > startingPosition.z)
                 {
                     transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - speed);

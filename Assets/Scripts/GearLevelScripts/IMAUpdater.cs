@@ -22,7 +22,6 @@ public class IMAUpdater : MonoBehaviour
             uiText.text = setText;
             if (ima != 0)
             {
-
                 uiText.text += $"Current equation: ({gears[3]}) / ({gears[0]}) = {ima.ToString("F2")}\r\n";
             }
             else if (ima == 0) {
