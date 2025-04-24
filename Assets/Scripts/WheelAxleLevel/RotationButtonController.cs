@@ -1,33 +1,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.XR.Interaction.Toolkit;
+using UnityEngine.Events;
 
 public class RotationButtonController : MonoBehaviour
 {
-    [SerializeField] XRSocketInteractor wheelSocket;
-    [SerializeField] RotateAround rotateScript;
-    [SerializeField] Button rotateButton;
+    [SerializeField] GameObject button;
+    [SerializeField] UnityEvent onPress;
+    [SerializeField] UnityEvent onRelease;
 
-    void Start()
-    {
-        rotateButton.onClick.AddListener(() => {
-            bool hasWheel = wheelSocket.GetOldestInteractableSelected() != null;
-            rotateScript.enabled = hasWheel;
-        });
-    }
+    private bool isPressed;
+    private Vector3 startingPosition;
+
 }
-
-/*void Start()
-{
-    // Link the button click to ToggleRotation
-    rotateButton.onClick.AddListener(ToggleRotation);
-}
-
-private void ToggleRotation()
-{
-    // Only enable rotation if there's a wheel in the socket
-    IXRSelectInteractable wheelInSocket = wheelSocket.GetOldestInteractableSelected();
-    rotateScript.enabled = (wheelInSocket != null);
-}
-
-*/
