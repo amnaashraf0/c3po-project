@@ -46,6 +46,7 @@ public class LeverManageNew : MonoBehaviour
             if (doneLaunching)
             {
                 cannonBall.GetComponent<LaunchCannonballNew>().enabled = false;
+                catapult.GetComponent<XRSocketInteractor>().enabled = true;
                 doneLaunching = false;
                 cannonBallLaunched = false;
                 cannonBall.GetComponent<LaunchCannonballNew>().resetTime();
@@ -68,6 +69,7 @@ public class LeverManageNew : MonoBehaviour
             cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[2]);
         }
         cannonBall.GetComponent<LaunchCannonballNew>().enabled = true;
+        catapult.GetComponent<XRSocketInteractor>().enabled = false;
         cannonBallLaunched = true;
     }
 

@@ -8,7 +8,7 @@ public class MoveFulcrum : MonoBehaviour
     [SerializeField] GameObject catapultArm;
     [SerializeField] GameObject fullCatapultObj;
     [SerializeField] GameObject catapultBase;
-    private float[] fulcrumPositions = { 0.32f, 1.3f, 2, 2.84f, 3.86f };
+    private float[] fulcrumPositions = { 0.22f, 1.0f, 1.8f, 2.7f, 3.3f };
     private int chosenPosition;
     // Start is called before the first frame update
     void Start()
