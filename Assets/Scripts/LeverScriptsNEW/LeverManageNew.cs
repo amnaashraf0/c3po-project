@@ -15,6 +15,8 @@ public class LeverManageNew : MonoBehaviour
     [SerializeField] GameObject catapultUI;
     [SerializeField] GameObject cannonBall;
     [SerializeField] GameObject catapult;
+    [SerializeField] ParticleSystem explosion;
+    [SerializeField] List<GameObject> slimes;
     private double effortDistance;
     private double resDistance;
     private double ima;
@@ -50,6 +52,13 @@ public class LeverManageNew : MonoBehaviour
                 doneLaunching = false;
                 cannonBallLaunched = false;
                 cannonBall.GetComponent<LaunchCannonballNew>().resetTime();
+                if (ima == correctIMA)
+                {
+                    explosion.Play();
+                    foreach (GameObject slime in slimes) {
+                        slime.GetComponent<Rigidbody>().AddExplosionForce(-500000f, slime.transform.position, 5);
+                    }
+                }
             }
         }
     }
