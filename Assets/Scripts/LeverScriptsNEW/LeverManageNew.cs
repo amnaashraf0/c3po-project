@@ -22,6 +22,8 @@ public class LeverManageNew : MonoBehaviour
     private double ima;
     private double correctIMA = 2;
     private bool cannonBallLaunched = false;
+    private bool timerRunning = false;
+    private float timer = 2f; //number of seconds for slimes to respawn
     public bool doneLaunching = false;
     // Start is called before the first frame update
     void Start()
@@ -56,9 +58,22 @@ public class LeverManageNew : MonoBehaviour
                 {
                     explosion.Play();
                     foreach (GameObject slime in slimes) {
-                        slime.GetComponent<Rigidbody>().AddExplosionForce(-500000f, slime.transform.position, 5);
+                        slime.GetComponent<Rigidbody>().AddExplosionForce(-800000f, slime.transform.position, 5);
+                        timerRunning = true;
                     }
                 }
+            }
+        }
+
+        //reset the slimes position after timer runs out
+        if (timerRunning) {
+            timer -= Time.deltaTime;
+            if (timer <= 0) {
+                foreach (GameObject slime in slimes) {
+                    slime.GetComponent<RespawnObject>().resetPosition();
+                }
+                timerRunning = false;
+                timer = 2f;
             }
         }
     }
@@ -69,13 +84,18 @@ public class LeverManageNew : MonoBehaviour
         if (ima > correctIMA)
         {
             cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[0]);
+            cannonBall.GetComponent<LaunchCannonballNew>().setSpeed(0.7f);
         }
         else if (ima == correctIMA)
         {
             cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[1]);
+            cannonBall.GetComponent<LaunchCannonballNew>().setSpeed(1.3f);
+
         }
         else {
             cannonBall.GetComponent<LaunchCannonballNew>().setCurve(curves[2]);
+            cannonBall.GetComponent<LaunchCannonballNew>().setSpeed(1.5f);
+
         }
         cannonBall.GetComponent<LaunchCannonballNew>().enabled = true;
         catapult.GetComponent<XRSocketInteractor>().enabled = false;

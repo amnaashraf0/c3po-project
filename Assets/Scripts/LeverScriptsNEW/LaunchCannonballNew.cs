@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaunchCannonballNew : MonoBehaviour
 {
     private QuadraticCurve curve;
-    public float speed;
+    private float speed;
     public bool done = false;
     [SerializeField] LeverManageNew leverManager;
 
@@ -34,4 +34,6 @@ public class LaunchCannonballNew : MonoBehaviour
 
     public void setCurve(QuadraticCurve givenCurve) { curve = givenCurve; }
     public void resetTime() { sampleTime = 0f; }
+
+    public void setSpeed(float speed) { this.speed = speed; }
 }

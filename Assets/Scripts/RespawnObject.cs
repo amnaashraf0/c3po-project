@@ -20,7 +20,7 @@ public class RespawnObject : MonoBehaviour
     void Update()
     {
         //Debug.Log(transform.position.y);
-        if (transform.position.y < respawnYThreshold)
+        if (transform.position.y < respawnYThreshold && !this.gameObject.name.Contains("Slime"))
         {
             resetPosition();
         }
