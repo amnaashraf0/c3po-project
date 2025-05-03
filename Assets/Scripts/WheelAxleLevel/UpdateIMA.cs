@@ -10,6 +10,7 @@ public class UpdateIMA : MonoBehaviour
     [SerializeField] TextMeshProUGUI uiText;     // Assign in Inspector
     [SerializeField] WheelManager wheelManager;  // Assign in Inspector
     [SerializeField] GameObject rotater;
+    [SerializeField] List<ParticleSystem> particles;
     private string setText = "Equation for wheel and axle IMA: \r\n(radius of wheel) / (radius of axle)\r\n";
 
     void Update()
@@ -38,6 +39,9 @@ public class UpdateIMA : MonoBehaviour
             {
                 uiText.text += "Current equation: Wheel not placed on barrel\r\n";
                 rotater.GetComponent<RotateAround>().enabled = false;
+                foreach (ParticleSystem p in particles) {
+                    p.Stop();
+                }
             }
 
             uiText.text += "Total IMA: " + ima.ToString("F2");

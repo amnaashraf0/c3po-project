@@ -6,12 +6,24 @@ using UnityEngine.UIElements;
 public class RotateAround : MonoBehaviour
 {
     public Transform pivotPoint;
-    public float rotationSpeed = 10.0f;
+    private float rotationSpeed = 10.0f;
+    [SerializeField] WheelManager manager;
 
     void Start() => enabled = false;
     // Update is called once per frame
     void Update()
     {
+        if (manager.getIMA() < manager.correctIMA)
+        {
+            rotationSpeed = 10.0f;
+        }
+        else if (manager.getIMA() == manager.correctIMA)
+        {
+            rotationSpeed = 30.0f;
+        }
+        else if (manager.getIMA() > manager.correctIMA) {
+            rotationSpeed = 60.0f;
+        }
         gameObject.transform.RotateAround(pivotPoint.position, pivotPoint.transform.up //supposedly uses the pivot's current orientation
             , rotationSpeed * Time.deltaTime);
         

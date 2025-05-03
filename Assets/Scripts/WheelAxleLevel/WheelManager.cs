@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class WheelManager : MonoBehaviour
@@ -8,6 +9,8 @@ public class WheelManager : MonoBehaviour
     public GameObject GetCurrentWheel() => currentWheel;
     public string GetCurrentWheelName() => currentWheel != null ? currentWheel.name : "";
     public bool HasWheel() => currentWheel != null;
+
+    public double correctIMA = 3.25 / axleRadius;
 
     public double getIMA()
     {

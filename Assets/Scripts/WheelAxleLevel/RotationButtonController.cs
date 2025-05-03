@@ -19,6 +19,8 @@ public class RotationButtonController : MonoBehaviour
     [SerializeField] UnityEvent onPress;
     [SerializeField] UnityEvent onRelease;
     [SerializeField] GameObject pivot;
+    [SerializeField] List<ParticleSystem> particles;
+    [SerializeField] WheelManager manager;
     //[SerializeField] RotateAround rotateAround;
 
     private GameObject presser;
@@ -52,7 +54,15 @@ public class RotationButtonController : MonoBehaviour
     }
     public void ToggleRotation()
     {
-       pivot.GetComponent<RotateAround>().enabled = true; 
+       pivot.GetComponent<RotateAround>().enabled = true;
+        if (manager.getIMA() == manager.correctIMA)
+        {
+            particles[0].Play();
+        }
+        else if (manager.getIMA() > manager.correctIMA) {
+            particles[1].Play();
+        }
+       
     }
 
 }

@@ -6,7 +6,7 @@ public class RespawnOnFall : MonoBehaviour
     private Quaternion initialRotation;
 
     [Tooltip("If the object falls below this Y value, it will respawn.")]
-    public float respawnYThreshold = 0.8f;
+    private float respawnYThreshold = 0.4f;
 
     private Rigidbody rb;
 
