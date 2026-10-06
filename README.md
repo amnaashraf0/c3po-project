@@ -7,6 +7,6 @@ We collaborated with Forrest Medcalf, an Introduction to Engineering teacher at 
 
 This project was submitted and accepted into the SIGGRAPH 2025 Faculty Submitted Student Work Symposium. 
 
-The project site can be found here: https://education.siggraph.org/wp/fssw/siggraph-2025-fssw/
+The project demonstration can be found here: https://education.siggraph.org/wp/fssw/siggraph-2025-fssw/
 Select "Texas A and M University and Frisco ISD Career and Technical Education Center" for the school.
 
