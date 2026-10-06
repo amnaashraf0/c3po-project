@@ -10,3 +10,6 @@ This project was submitted and accepted into the SIGGRAPH 2025 Faculty Submitted
 The project demonstration can be found here: https://education.siggraph.org/wp/fssw/siggraph-2025-fssw/
 Select "Texas A and M University and Frisco ISD Career and Technical Education Center" for the school.
 
+YouTube link: youtube.com/watch?v=8EV_nvciv9A&feature=youtu.be
+Our project begins at around 2:00.
+
